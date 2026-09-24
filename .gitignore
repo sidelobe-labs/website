@@ -2,6 +2,11 @@
 .env
 .env.*
 !.env.example
+.dev.vars
+
+# Dependencies and Cloudflare local state
+node_modules/
+.wrangler/
 
 # Operating system files
 .DS_Store
