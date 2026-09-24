@@ -62,37 +62,14 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 11px;
       text-decoration: none;
-      font-weight: 700;
-      letter-spacing: -.03em;
-      font-size: 18px;
     }
 
-    .mark {
-      width: 30px;
-      height: 30px;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      position: relative;
-      background: var(--panel);
-      box-shadow: inset 0 0 0 7px rgba(255,255,255,.015);
+    .brand-logo {
+      display: block;
+      width: auto;
+      height: 34px;
     }
-
-    .mark::before,
-    .mark::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      width: 9px;
-      height: 9px;
-      margin-top: -4.5px;
-      border: 1px solid rgba(197,255,114,.55);
-      border-radius: 50%;
-    }
-
-    .mark::before { left: -7px; }
-    .mark::after { right: -7px; }
 
     .status {
       display: inline-flex;
@@ -306,8 +283,7 @@
   <header>
     <div class="shell nav">
       <a class="brand" href="/" aria-label="Sidelobe home">
-        <span class="mark" aria-hidden="true"></span>
-        <span>Sidelobe</span>
+        <img class="brand-logo" src="/brand/sidelobe-signal-dark.svg" alt="Sidelobe" />
       </a>
 
       <div class="status">
