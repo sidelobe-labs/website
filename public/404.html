@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#111C2D" />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <title>404 — Signal lost · Sidelobe</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      color: #f5f8fc;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 72% 22%, rgba(121,177,255,.12), transparent 28rem),
+        linear-gradient(180deg, #111c2d, #0c1523);
+    }
+    .card {
+      width: min(100%, 760px);
+      padding: clamp(34px, 7vw, 70px);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 28px;
+      background: rgba(255,255,255,.025);
+      box-shadow: 0 35px 120px rgba(0,0,0,.28);
+    }
+    .logo { width: min(100%, 260px); height: auto; display: block; margin-bottom: 64px; }
+    .eyebrow {
+      color: #8fd18f;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 18px 0 0;
+      font-size: clamp(52px, 10vw, 92px);
+      line-height: .92;
+      letter-spacing: -.065em;
+    }
+    p { margin: 26px 0 0; color: #9eacbe; font-size: 17px; line-height: 1.6; }
+    a {
+      display: inline-flex;
+      margin-top: 34px;
+      padding: 11px 16px;
+      border-radius: 999px;
+      color: #0c1523;
+      background: #79b1ff;
+      font-size: 13px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img class="logo" src="/brand/sidelobe-signal-dark.svg" alt="Sidelobe" />
+    <div class="eyebrow">404 / signal lost</div>
+    <h1>Nothing here.</h1>
+    <p>The address is valid. The page is not.</p>
+    <a href="/">Back to sidelobe.dev</a>
+  </main>
+</body>
+</html>
