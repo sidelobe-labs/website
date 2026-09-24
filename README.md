@@ -2,21 +2,34 @@
 
 Source repository for the Sidelobe studio website.
 
-Production domain:
+Production domain: https://sidelobe.dev
 
-https://sidelobe.dev
+Status: temporary landing page / early setup.
 
-Status:
-Temporary landing page / early setup.
+## Hosting
 
-## Cloudflare Pages
+The site is an assets-only Cloudflare Worker connected directly to this GitHub repository.
 
-1. In Cloudflare: Workers & Pages -> Create -> Pages -> Connect to Git.
-2. Select `sidelobe-labs/website`.
-3. Framework preset: None.
-4. Build command: leave empty.
-5. Build output directory: `/`
-6. Deploy.
-7. Add the custom domain `sidelobe.dev`.
+Structure:
 
-No Node.js build step is required. Once connected, every push to `main` will trigger a new deployment.
+```text
+public/
+  index.html
+  _headers
+wrangler.jsonc
+package.json
+```
+
+Cloudflare Workers Builds settings:
+
+- Project name: `website`
+- Production branch: `main`
+- Build command: leave empty
+- Deploy command: `npx wrangler deploy`
+- Preview command: `npx wrangler preview`
+- Preview builds: enabled
+- Cloudflare Access: disabled for the public website
+
+`wrangler.jsonc` serves `./public` as static assets. Every push to `main` deploys production after the GitHub integration is connected. Non-production branches can receive isolated Cloudflare Preview deployments.
+
+After the first successful deployment, attach `sidelobe.dev` as the Worker's custom domain in Cloudflare.
