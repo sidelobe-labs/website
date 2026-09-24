@@ -3,359 +3,664 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Sidelobe — independent software studio." />
-  <meta name="theme-color" content="#0b0d0c" />
-  <title>Sidelobe — software, quietly built</title>
+  <meta name="description" content="Sidelobe is an independent software studio building focused products, internal tools and automation." />
+  <meta name="theme-color" content="#111C2D" />
+  <meta name="color-scheme" content="dark" />
+
+  <link rel="canonical" href="https://sidelobe.dev/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sidelobe — Small software. Built properly." />
+  <meta property="og:description" content="Independent software studio building focused products, tools and automation." />
+  <meta property="og:url" content="https://sidelobe.dev/" />
+
+  <title>Sidelobe — Small software. Built properly.</title>
 
   <style>
     :root {
-      --bg: #0b0d0c;
-      --panel: rgba(255,255,255,.045);
-      --line: rgba(255,255,255,.10);
-      --text: #f2f4ef;
-      --muted: #a7aea7;
-      --accent: #c5ff72;
-      --accent-soft: rgba(197,255,114,.10);
+      --bg: #111c2d;
+      --bg-deep: #0c1523;
+      --surface: rgba(255, 255, 255, .035);
+      --surface-strong: rgba(255, 255, 255, .055);
+      --line: rgba(255, 255, 255, .10);
+      --line-strong: rgba(255, 255, 255, .16);
+      --text: #f5f8fc;
+      --muted: #9eacbe;
+      --blue: #79b1ff;
+      --green: #8fd18f;
       --max: 1180px;
     }
 
     * { box-sizing: border-box; }
 
-    html, body {
-      margin: 0;
-      min-height: 100%;
-      background:
-        radial-gradient(circle at 70% 20%, rgba(197,255,114,.06), transparent 28%),
-        linear-gradient(180deg, #0b0d0c 0%, #0d100e 100%);
-      color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    html {
       scroll-behavior: smooth;
+      background: var(--bg-deep);
     }
 
     body {
+      margin: 0;
       min-height: 100vh;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 78% 14%, rgba(121, 177, 255, .11), transparent 26rem),
+        radial-gradient(circle at 18% 44%, rgba(143, 209, 143, .055), transparent 30rem),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
       overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .16;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(to bottom, #000 0%, transparent 72%);
     }
 
     a { color: inherit; }
 
     .shell {
-      width: min(calc(100% - 36px), var(--max));
-      margin: 0 auto;
+      width: min(calc(100% - 40px), var(--max));
+      margin-inline: auto;
     }
 
-    header {
-      height: 78px;
-      display: flex;
-      align-items: center;
+    .site-header {
+      position: relative;
+      z-index: 10;
       border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+      background: rgba(17, 28, 45, .58);
     }
 
     .nav {
-      width: 100%;
+      min-height: 82px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 28px;
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
       text-decoration: none;
+      border-radius: 8px;
+    }
+
+    .brand:focus-visible,
+    .nav-link:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 5px;
     }
 
     .brand-logo {
       display: block;
       width: auto;
-      height: 34px;
+      height: 36px;
     }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color .18s ease;
+    }
+
+    .nav-link:hover { color: var(--text); }
 
     .status {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: var(--muted);
-      font-size: 13px;
+      color: #bdc8d6;
+      font-size: 12px;
+      letter-spacing: .02em;
     }
 
-    .dot {
+    .status-dot {
       width: 7px;
       height: 7px;
       border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 18px rgba(197,255,114,.65);
+      background: var(--green);
+      box-shadow: 0 0 18px rgba(143, 209, 143, .65);
     }
 
-    main {
+    .hero {
+      min-height: calc(100vh - 82px);
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 48px;
+      grid-template-columns: minmax(0, 1.05fr) minmax(380px, .95fr);
+      gap: clamp(44px, 7vw, 90px);
       align-items: center;
-      min-height: calc(100vh - 156px);
-      padding: 84px 0;
+      padding: 88px 0 74px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      color: var(--accent);
-      font-size: 12px;
+      gap: 12px;
+      margin-bottom: 25px;
+      color: var(--green);
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: .16em;
+      letter-spacing: .18em;
       text-transform: uppercase;
-      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 1px;
+      background: currentColor;
+      opacity: .7;
     }
 
     h1 {
       margin: 0;
-      max-width: 760px;
-      font-size: clamp(54px, 8vw, 108px);
+      max-width: 780px;
+      font-size: clamp(58px, 7.8vw, 108px);
       line-height: .91;
-      letter-spacing: -.075em;
-      font-weight: 700;
+      letter-spacing: -.072em;
+      font-weight: 680;
     }
 
+    .blue { color: var(--blue); }
+
     .lead {
-      max-width: 610px;
-      margin: 30px 0 0;
+      max-width: 650px;
+      margin: 31px 0 0;
       color: var(--muted);
-      font-size: clamp(17px, 2vw, 21px);
-      line-height: 1.55;
+      font-size: clamp(17px, 1.7vw, 20px);
+      line-height: 1.58;
       letter-spacing: -.015em;
     }
 
-    .chips {
+    .capabilities {
       display: flex;
       flex-wrap: wrap;
       gap: 9px;
       margin-top: 34px;
     }
 
-    .chip {
+    .pill {
       padding: 9px 12px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      color: #cfd4cf;
-      background: rgba(255,255,255,.02);
-      font-size: 13px;
+      color: #c8d2df;
+      background: rgba(255,255,255,.022);
+      font-size: 12px;
+      letter-spacing: .01em;
     }
 
-    .visual {
+    .visual-wrap {
       position: relative;
-      min-height: 520px;
       display: grid;
       place-items: center;
     }
 
-    .card {
-      width: min(100%, 470px);
+    .visual-wrap::before {
+      content: "";
+      position: absolute;
+      width: 72%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: rgba(121,177,255,.09);
+      filter: blur(90px);
+      pointer-events: none;
+    }
+
+    .signal-card {
+      position: relative;
+      width: min(100%, 500px);
       aspect-ratio: 1;
       border: 1px solid var(--line);
       border-radius: 28px;
-      background:
-        linear-gradient(var(--line) 1px, transparent 1px),
-        linear-gradient(90deg, var(--line) 1px, transparent 1px),
-        rgba(255,255,255,.018);
-      background-size: 42px 42px;
-      position: relative;
       overflow: hidden;
-      box-shadow: 0 30px 90px rgba(0,0,0,.32);
+      background:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
+      background-size: 42px 42px, 42px 42px, auto;
+      box-shadow:
+        0 35px 110px rgba(0,0,0,.30),
+        inset 0 1px rgba(255,255,255,.03);
     }
 
-    .signal {
+    .signal-card::after {
+      content: "";
       position: absolute;
       inset: 0;
-      display: grid;
-      place-items: center;
+      background: linear-gradient(115deg, transparent 34%, rgba(121,177,255,.035) 48%, transparent 62%);
+      transform: translateX(-90%);
     }
 
-    svg {
-      width: 88%;
-      height: auto;
-      overflow: visible;
-    }
-
-    .main-lobe {
-      stroke: var(--text);
-      stroke-width: 2;
-      fill: none;
-      opacity: .95;
-      stroke-linecap: round;
-    }
-
-    .side-lobe {
-      stroke: var(--accent);
-      stroke-width: 2;
-      fill: none;
-      opacity: .68;
-      stroke-linecap: round;
-    }
-
-    .axis {
-      stroke: rgba(255,255,255,.12);
-      stroke-width: 1;
-    }
-
-    .tag {
+    .signal-label,
+    .signal-meta {
       position: absolute;
+      z-index: 2;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .signal-label {
       top: 24px;
       left: 24px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(11,13,12,.72);
-      backdrop-filter: blur(10px);
-      color: var(--muted);
-      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
     }
 
-    .corner {
-      position: absolute;
+    .signal-label::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .signal-meta {
       right: 24px;
-      bottom: 24px;
-      color: var(--muted);
-      font-size: 12px;
+      bottom: 22px;
       text-align: right;
-      line-height: 1.5;
+      line-height: 1.6;
+    }
+
+    .signal-symbol {
+      position: absolute;
+      z-index: 1;
+      inset: 50% auto auto 50%;
+      width: 90%;
+      transform: translate(-50%, -50%);
+      filter: drop-shadow(0 0 24px rgba(143,209,143,.08));
+    }
+
+    .signal-card .crosshair-x,
+    .signal-card .crosshair-y {
+      position: absolute;
+      z-index: 0;
+      opacity: .18;
+      background: var(--blue);
+    }
+
+    .crosshair-x {
+      height: 1px;
+      left: 12%;
+      right: 12%;
+      top: 50%;
+    }
+
+    .crosshair-y {
+      width: 1px;
+      top: 12%;
+      bottom: 12%;
+      left: 50%;
+    }
+
+    .section {
+      padding: 104px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      gap: 48px;
+      align-items: start;
+      margin-bottom: 52px;
+    }
+
+    .kicker {
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -.045em;
+      font-weight: 620;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .principle {
+      min-height: 210px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--surface);
+    }
+
+    .principle-index {
+      color: var(--blue);
+      font-size: 11px;
+      letter-spacing: .12em;
+    }
+
+    .principle h3 {
+      margin: 62px 0 10px;
+      font-size: 20px;
+      letter-spacing: -.025em;
+      font-weight: 600;
+    }
+
+    .principle p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .now {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+      padding: 24px 26px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: linear-gradient(100deg, rgba(121,177,255,.055), rgba(143,209,143,.035));
+    }
+
+    .now-copy {
+      display: flex;
+      gap: 18px;
+      align-items: baseline;
+      min-width: 0;
+    }
+
+    .now-label {
+      flex: 0 0 auto;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .now-text {
+      color: #ced8e5;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .now-code {
+      color: var(--muted);
+      font: 11px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      white-space: nowrap;
     }
 
     footer {
-      min-height: 78px;
-      display: flex;
-      align-items: center;
+      min-height: 100px;
       border-top: 1px solid var(--line);
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
     }
 
     .footer-row {
-      width: 100%;
+      min-height: 100px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
+      gap: 22px;
     }
 
-    .domain {
-      color: var(--text);
+    .footer-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #c7d1df;
     }
 
-    @media (max-width: 880px) {
-      main {
+    .footer-mark::before {
+      content: "";
+      width: 22px;
+      height: 1px;
+      background: var(--green);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
         grid-template-columns: 1fr;
-        padding: 62px 0;
+        min-height: auto;
+        padding-top: 72px;
       }
 
-      .visual {
-        min-height: unset;
+      .visual-wrap {
+        margin-top: 12px;
       }
 
-      .card {
+      .signal-card {
         max-width: 620px;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .principles {
+        grid-template-columns: 1fr;
+      }
+
+      .principle {
+        min-height: 170px;
+      }
+
+      .principle h3 {
+        margin-top: 38px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .shell {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      .nav {
+        min-height: 72px;
+      }
+
+      .brand-logo {
+        height: 29px;
+      }
+
+      .nav-link {
+        display: none;
+      }
+
+      .status {
+        font-size: 11px;
+      }
+
+      .hero {
+        padding: 62px 0 58px;
+        gap: 50px;
+      }
+
+      h1 {
+        font-size: clamp(50px, 15.5vw, 72px);
+      }
+
+      .signal-card {
+        border-radius: 22px;
+      }
+
+      .section {
+        padding: 78px 0;
+      }
+
+      .now {
+        grid-template-columns: 1fr;
+      }
+
+      .now-copy {
+        display: block;
+      }
+
+      .now-label {
+        display: block;
+        margin-bottom: 9px;
+      }
+
+      .now-code {
+        white-space: normal;
+      }
+
+      .footer-row {
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        padding: 26px 0;
       }
     }
 
     @media (prefers-reduced-motion: no-preference) {
-      .card {
-        animation: float 8s ease-in-out infinite;
+      .signal-card {
+        animation: float 9s ease-in-out infinite;
       }
 
-      .side-lobe {
-        stroke-dasharray: 8 7;
-        animation: dash 16s linear infinite;
+      .signal-card::after {
+        animation: scan 8s ease-in-out infinite;
       }
 
       @keyframes float {
-        0%, 100% { transform: translateY(0px) rotate(-.25deg); }
-        50% { transform: translateY(-8px) rotate(.25deg); }
+        0%, 100% { transform: translateY(0) rotate(-.2deg); }
+        50% { transform: translateY(-8px) rotate(.2deg); }
       }
 
-      @keyframes dash {
-        to { stroke-dashoffset: -120; }
+      @keyframes scan {
+        0%, 25% { transform: translateX(-90%); }
+        70%, 100% { transform: translateX(90%); }
       }
     }
   </style>
 </head>
 
 <body>
-  <header>
+  <header class="site-header">
     <div class="shell nav">
       <a class="brand" href="/" aria-label="Sidelobe home">
         <img class="brand-logo" src="/brand/sidelobe-signal-dark.svg" alt="Sidelobe" />
       </a>
 
-      <div class="status">
-        <span class="dot" aria-hidden="true"></span>
-        building
+      <div class="nav-right">
+        <a class="nav-link" href="#approach">Approach</a>
+        <div class="status" aria-label="Studio status: building">
+          <span class="status-dot" aria-hidden="true"></span>
+          building
+        </div>
       </div>
     </div>
   </header>
 
-  <div class="shell">
-    <main>
-      <section>
-        <div class="eyebrow">Independent software studio</div>
-        <h1>Small software.<br>Built properly.</h1>
+  <main>
+    <div class="shell">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <div class="eyebrow">Independent software studio</div>
 
-        <p class="lead">
-          Sidelobe is a small software studio building focused tools,
-          experiments and products that solve real problems without unnecessary noise.
-        </p>
+          <h1 id="hero-title">
+            Small software.<br>
+            Built <span class="blue">properly.</span>
+          </h1>
 
-        <div class="chips" aria-label="What we build">
-          <span class="chip">web apps</span>
-          <span class="chip">mobile</span>
-          <span class="chip">internal tools</span>
-          <span class="chip">automation</span>
-        </div>
-      </section>
+          <p class="lead">
+            Sidelobe builds focused products, internal tools and automation
+            for real problems — with less noise, less ceremony and more attention to the details that matter.
+          </p>
 
-      <section class="visual" aria-label="Sidelobe signal visual">
-        <div class="card">
-          <div class="tag">signal / 001</div>
-
-          <div class="signal">
-            <svg viewBox="0 0 500 260" role="img" aria-label="Stylised signal with side lobes">
-              <line class="axis" x1="26" y1="130" x2="474" y2="130" />
-              <path class="side-lobe"
-                    d="M26,130
-                       C52,130 60,105 82,105
-                       C106,105 110,130 132,130
-                       C151,130 159,84 184,84
-                       C205,84 213,130 228,130" />
-              <path class="main-lobe"
-                    d="M228,130
-                       C237,130 242,36 250,36
-                       C258,36 263,130 272,130" />
-              <path class="side-lobe"
-                    d="M272,130
-                       C287,130 295,84 316,84
-                       C341,84 349,130 368,130
-                       C390,130 394,105 418,105
-                       C440,105 448,130 474,130" />
-            </svg>
+          <div class="capabilities" aria-label="Areas of work">
+            <span class="pill">web products</span>
+            <span class="pill">mobile</span>
+            <span class="pill">internal tools</span>
+            <span class="pill">automation</span>
+            <span class="pill">experiments</span>
           </div>
+        </div>
 
-          <div class="corner">
-            quietly in development<br>
-            sidelobe.dev
+        <div class="visual-wrap" aria-hidden="true">
+          <div class="signal-card">
+            <div class="signal-label">signal / active</div>
+            <span class="crosshair-x"></span>
+            <span class="crosshair-y"></span>
+            <img class="signal-symbol" src="/brand/sidelobe-signal-symbol-dark.svg" alt="" />
+            <div class="signal-meta">
+              independent systems<br>
+              sidelobe.dev
+            </div>
           </div>
         </div>
       </section>
-    </main>
-  </div>
+    </div>
+
+    <section class="section" id="approach">
+      <div class="shell">
+        <div class="section-head">
+          <div class="kicker">How we build</div>
+          <h2>Useful first. Clear second. Clever only when it earns its place.</h2>
+        </div>
+
+        <div class="principles">
+          <article class="principle">
+            <div class="principle-index">01 / focus</div>
+            <h3>Small surface area</h3>
+            <p>Start with the problem, keep the product tight, and resist features that do not pull their weight.</p>
+          </article>
+
+          <article class="principle">
+            <div class="principle-index">02 / craft</div>
+            <h3>Quietly well made</h3>
+            <p>Fast is useful. Reliable, understandable and pleasant to use is what makes fast worth shipping.</p>
+          </article>
+
+          <article class="principle">
+            <div class="principle-index">03 / ownership</div>
+            <h3>Built to be operated</h3>
+            <p>Software is not finished at deploy. Infrastructure, observability and maintenance are part of the product.</p>
+          </article>
+        </div>
+
+        <div class="now">
+          <div class="now-copy">
+            <span class="now-label">Now</span>
+            <span class="now-text">The studio, its first products and the infrastructure behind them are being built.</span>
+          </div>
+          <span class="now-code">status: early / active</span>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <div class="shell footer-row">
-      <span>© <span id="year"></span> Sidelobe</span>
-      <span class="domain">sidelobe.dev</span>
+      <span class="footer-mark">Sidelobe</span>
+      <span>© 2026 · sidelobe.dev</span>
     </div>
   </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
