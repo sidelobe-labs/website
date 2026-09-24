@@ -1,0 +1,18 @@
+{
+  "name": "Sidelobe",
+  "short_name": "Sidelobe",
+  "description": "Independent software studio.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#111C2D",
+  "theme_color": "#111C2D",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
