@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Sidelobe — independent software studio." />
+  <meta name="theme-color" content="#0b0d0c" />
+  <title>Sidelobe — software, quietly built</title>
+
+  <style>
+    :root {
+      --bg: #0b0d0c;
+      --panel: rgba(255,255,255,.045);
+      --line: rgba(255,255,255,.10);
+      --text: #f2f4ef;
+      --muted: #a7aea7;
+      --accent: #c5ff72;
+      --accent-soft: rgba(197,255,114,.10);
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 70% 20%, rgba(197,255,114,.06), transparent 28%),
+        linear-gradient(180deg, #0b0d0c 0%, #0d100e 100%);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(calc(100% - 36px), var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: -.03em;
+      font-size: 18px;
+    }
+
+    .mark {
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      position: relative;
+      background: var(--panel);
+      box-shadow: inset 0 0 0 7px rgba(255,255,255,.015);
+    }
+
+    .mark::before,
+    .mark::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 9px;
+      height: 9px;
+      margin-top: -4.5px;
+      border: 1px solid rgba(197,255,114,.55);
+      border-radius: 50%;
+    }
+
+    .mark::before { left: -7px; }
+    .mark::after { right: -7px; }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 18px rgba(197,255,114,.65);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 48px;
+      align-items: center;
+      min-height: calc(100vh - 156px);
+      padding: 84px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(54px, 8vw, 108px);
+      line-height: .91;
+      letter-spacing: -.075em;
+      font-weight: 700;
+    }
+
+    .lead {
+      max-width: 610px;
+      margin: 30px 0 0;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.55;
+      letter-spacing: -.015em;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 34px;
+    }
+
+    .chip {
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #cfd4cf;
+      background: rgba(255,255,255,.02);
+      font-size: 13px;
+    }
+
+    .visual {
+      position: relative;
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+    }
+
+    .card {
+      width: min(100%, 470px);
+      aspect-ratio: 1;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px),
+        rgba(255,255,255,.018);
+      background-size: 42px 42px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 90px rgba(0,0,0,.32);
+    }
+
+    .signal {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+    }
+
+    svg {
+      width: 88%;
+      height: auto;
+      overflow: visible;
+    }
+
+    .main-lobe {
+      stroke: var(--text);
+      stroke-width: 2;
+      fill: none;
+      opacity: .95;
+      stroke-linecap: round;
+    }
+
+    .side-lobe {
+      stroke: var(--accent);
+      stroke-width: 2;
+      fill: none;
+      opacity: .68;
+      stroke-linecap: round;
+    }
+
+    .axis {
+      stroke: rgba(255,255,255,.12);
+      stroke-width: 1;
+    }
+
+    .tag {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(11,13,12,.72);
+      backdrop-filter: blur(10px);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .corner {
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+      line-height: 1.5;
+    }
+
+    footer {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-row {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .domain {
+      color: var(--text);
+    }
+
+    @media (max-width: 880px) {
+      main {
+        grid-template-columns: 1fr;
+        padding: 62px 0;
+      }
+
+      .visual {
+        min-height: unset;
+      }
+
+      .card {
+        max-width: 620px;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .card {
+        animation: float 8s ease-in-out infinite;
+      }
+
+      .side-lobe {
+        stroke-dasharray: 8 7;
+        animation: dash 16s linear infinite;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(-.25deg); }
+        50% { transform: translateY(-8px) rotate(.25deg); }
+      }
+
+      @keyframes dash {
+        to { stroke-dashoffset: -120; }
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="shell nav">
+      <a class="brand" href="/" aria-label="Sidelobe home">
+        <span class="mark" aria-hidden="true"></span>
+        <span>Sidelobe</span>
+      </a>
+
+      <div class="status">
+        <span class="dot" aria-hidden="true"></span>
+        building
+      </div>
+    </div>
+  </header>
+
+  <div class="shell">
+    <main>
+      <section>
+        <div class="eyebrow">Independent software studio</div>
+        <h1>Small software.<br>Built properly.</h1>
+
+        <p class="lead">
+          Sidelobe is a small software studio building focused tools,
+          experiments and products that solve real problems without unnecessary noise.
+        </p>
+
+        <div class="chips" aria-label="What we build">
+          <span class="chip">web apps</span>
+          <span class="chip">mobile</span>
+          <span class="chip">internal tools</span>
+          <span class="chip">automation</span>
+        </div>
+      </section>
+
+      <section class="visual" aria-label="Sidelobe signal visual">
+        <div class="card">
+          <div class="tag">signal / 001</div>
+
+          <div class="signal">
+            <svg viewBox="0 0 500 260" role="img" aria-label="Stylised signal with side lobes">
+              <line class="axis" x1="26" y1="130" x2="474" y2="130" />
+              <path class="side-lobe"
+                    d="M26,130
+                       C52,130 60,105 82,105
+                       C106,105 110,130 132,130
+                       C151,130 159,84 184,84
+                       C205,84 213,130 228,130" />
+              <path class="main-lobe"
+                    d="M228,130
+                       C237,130 242,36 250,36
+                       C258,36 263,130 272,130" />
+              <path class="side-lobe"
+                    d="M272,130
+                       C287,130 295,84 316,84
+                       C341,84 349,130 368,130
+                       C390,130 394,105 418,105
+                       C440,105 448,130 474,130" />
+            </svg>
+          </div>
+
+          <div class="corner">
+            quietly in development<br>
+            sidelobe.dev
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="shell footer-row">
+      <span>© <span id="year"></span> Sidelobe</span>
+      <span class="domain">sidelobe.dev</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
