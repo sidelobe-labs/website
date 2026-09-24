@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Sidelobe is an independent software studio building focused products, internal tools and automation." />
+  <meta name="description" content="Sidelobe is an independent software studio building focused products and on-demand applications for real workflows." />
   <meta name="theme-color" content="#111C2D" />
   <meta name="color-scheme" content="dark" />
 
@@ -14,7 +14,7 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Sidelobe — Small software. Built properly." />
-  <meta property="og:description" content="Independent software studio building focused products, tools and automation." />
+  <meta property="og:description" content="Independent software studio building focused products and on-demand applications for real workflows." />
   <meta property="og:url" content="https://sidelobe.dev/" />
   <meta property="og:image" content="https://sidelobe.dev/og.png" />
   <meta property="og:image:width" content="1200" />
@@ -149,6 +149,31 @@
 
     .nav-link:hover { color: var(--text); }
 
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid rgba(121,177,255,.38);
+      border-radius: 999px;
+      color: #dceaff;
+      background: rgba(121,177,255,.08);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 650;
+      transition:
+        transform .18s ease,
+        border-color .18s ease,
+        background .18s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      border-color: rgba(121,177,255,.68);
+      background: rgba(121,177,255,.14);
+    }
+
     .status {
       display: inline-flex;
       align-items: center;
@@ -223,11 +248,57 @@
       letter-spacing: -.012em;
     }
 
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 38px;
+    }
+
+    .hero-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 17px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 650;
+      transition:
+        transform .18s ease,
+        background .18s ease,
+        border-color .18s ease;
+    }
+
+    .hero-action.primary {
+      color: #0c1523;
+      background: var(--blue);
+      border: 1px solid var(--blue);
+    }
+
+    .hero-action.primary:hover {
+      transform: translateY(-2px);
+      background: #8ebdff;
+    }
+
+    .hero-action.secondary {
+      color: #dce4ee;
+      background: rgba(255,255,255,.02);
+      border: 1px solid var(--line);
+    }
+
+    .hero-action.secondary:hover {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
+      background: rgba(255,255,255,.045);
+    }
+
     .capabilities {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 38px;
+      margin-top: 22px;
     }
 
     .pill {
@@ -357,6 +428,74 @@
       top: 13%;
       bottom: 13%;
       left: 50%;
+    }
+
+    .ondemand {
+      position: relative;
+      padding: clamp(108px, 12vw, 150px) 0;
+    }
+
+    .ondemand::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: max(var(--gutter), calc((100vw - var(--frame)) / 2 + var(--gutter)));
+      right: max(var(--gutter), calc((100vw - var(--frame)) / 2 + var(--gutter)));
+      height: 1px;
+      background: var(--line);
+    }
+
+    .ondemand-grid {
+      display: grid;
+      grid-template-columns: minmax(170px, .62fr) minmax(0, 1.38fr);
+      gap: clamp(42px, 7vw, 86px);
+      align-items: start;
+    }
+
+    .ondemand-copy {
+      max-width: 760px;
+    }
+
+    .ondemand-copy h2 {
+      margin-bottom: 24px;
+    }
+
+    .ondemand-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.72;
+      max-width: 690px;
+    }
+
+    .ondemand-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .ondemand-item {
+      padding: 19px 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.022);
+    }
+
+    .ondemand-item strong {
+      display: block;
+      color: #dce7f4;
+      font-size: 14px;
+      font-weight: 650;
+      letter-spacing: -.01em;
+    }
+
+    .ondemand-item span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
     }
 
     .section {
@@ -682,10 +821,18 @@
       }
 
       .section-head,
-      .contact-grid {
+      .contact-grid,
+      .ondemand-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+      }
+
+      .section-head {
         margin-bottom: 46px;
+      }
+
+      .ondemand-list {
+        grid-template-columns: 1fr 1fr;
       }
 
       .studio-note {
@@ -718,8 +865,19 @@
         height: 30px;
       }
 
-      .nav-link {
+      .nav-link,
+      .status {
         display: none;
+      }
+
+      .nav-right {
+        gap: 0;
+      }
+
+      .nav-cta {
+        min-height: 36px;
+        padding-inline: 12px;
+        font-size: 11px;
       }
 
       .status {
@@ -740,8 +898,18 @@
         margin-top: 28px;
       }
 
-      .capabilities {
+      .hero-actions {
         margin-top: 30px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-action {
+        width: 100%;
+      }
+
+      .capabilities {
+        margin-top: 18px;
       }
 
       .visual-wrap {
@@ -752,8 +920,13 @@
         border-radius: 24px;
       }
 
-      .section {
+      .section,
+      .ondemand {
         padding: 84px 0 92px;
+      }
+
+      .ondemand-list {
+        grid-template-columns: 1fr;
       }
 
       .contact {
@@ -835,12 +1008,9 @@
       </a>
 
       <div class="nav-right">
+        <a class="nav-link" href="#on-demand">On demand</a>
         <a class="nav-link" href="#approach">Approach</a>
-        <a class="nav-link" href="#contact">Contact</a>
-        <div class="status" aria-label="Studio status: building">
-          <span class="status-dot" aria-hidden="true"></span>
-          building
-        </div>
+        <a class="nav-cta" href="#contact">Contact</a>
       </div>
     </div>
   </header>
@@ -857,16 +1027,21 @@
           </h1>
 
           <p class="lead">
-            Sidelobe builds focused products, internal tools and automation
-            for real problems — with less noise, less ceremony and more attention to the details that matter.
+            Sidelobe builds focused products and <strong style="color:#dce7f4;font-weight:600;">on-demand applications</strong>
+            for real workflows — from a rough problem to a working tool, without unnecessary ceremony.
           </p>
 
+          <div class="hero-actions">
+            <a class="hero-action primary" href="#contact">Build an app on demand</a>
+            <a class="hero-action secondary" href="#on-demand">How it works</a>
+          </div>
+
           <div class="capabilities" aria-label="Areas of work">
-            <span class="pill">web products</span>
-            <span class="pill">mobile</span>
+            <span class="pill">custom web apps</span>
             <span class="pill">internal tools</span>
-            <span class="pill">automation</span>
-            <span class="pill">experiments</span>
+            <span class="pill">workflow automation</span>
+            <span class="pill">mobile</span>
+            <span class="pill">prototypes</span>
           </div>
         </div>
 
@@ -884,6 +1059,42 @@
         </div>
       </section>
     </div>
+
+    <section class="ondemand" id="on-demand">
+      <div class="shell ondemand-grid">
+        <div>
+          <div class="kicker">On demand</div>
+        </div>
+
+        <div class="ondemand-copy">
+          <h2>Need software for one specific problem?</h2>
+          <p>
+            Sidelobe can design and build a focused application around the way you actually work.
+            No giant platform required — just the right tool for the job, built to be useful from day one
+            and maintainable after launch.
+          </p>
+
+          <div class="ondemand-list">
+            <div class="ondemand-item">
+              <strong>Internal tools</strong>
+              <span>Replace spreadsheet-heavy or manual workflows with something purpose-built.</span>
+            </div>
+            <div class="ondemand-item">
+              <strong>Workflow apps</strong>
+              <span>Small systems for planning, approvals, operations, scheduling or coordination.</span>
+            </div>
+            <div class="ondemand-item">
+              <strong>Prototypes</strong>
+              <span>Turn an idea into something real enough to test with actual users.</span>
+            </div>
+            <div class="ondemand-item">
+              <strong>Automation</strong>
+              <span>Connect existing processes and remove repetitive work where custom logic helps.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="section" id="approach">
       <div class="shell">
@@ -927,20 +1138,17 @@
         <div>
           <div class="kicker">Studio</div>
           <p class="studio-note">
-            Independent studio based in Europe. Small team, focused scope, serious software.
+            Independent studio based in Europe. Focused scope, direct collaboration, serious software.
           </p>
         </div>
 
         <div class="contact-card">
-          <div class="contact-kicker">Start a conversation</div>
-          <h2>Have a problem worth simplifying?</h2>
+          <div class="contact-kicker">On-demand software</div>
+          <h2>Have a workflow that deserves its own app?</h2>
 
           <div class="contact-links">
-            <a class="contact-link primary" href="mailto:hello@sidelobe.dev">
+            <a class="contact-link primary" href="mailto:hello@sidelobe.dev?subject=On-demand%20application">
               hello@sidelobe.dev
-            </a>
-            <a class="contact-link" href="https://github.com/sidelobe-labs" target="_blank" rel="noreferrer">
-              GitHub · sidelobe-labs
             </a>
           </div>
         </div>
