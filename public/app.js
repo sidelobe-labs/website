@@ -21,15 +21,15 @@
     if (!menuButton || !mobileNav) return;
 
     menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
     mobileNav.hidden = !open;
+
     const label = menuButton.querySelector(".menu-toggle-label");
     if (label) label.textContent = open ? "Close" : "Menu";
-    menuButton.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
   };
 
   menuButton?.addEventListener("click", () => {
-    const open = menuButton.getAttribute("aria-expanded") !== "true";
-    setMenu(open);
+    setMenu(menuButton.getAttribute("aria-expanded") !== "true");
   });
 
   mobileNav?.querySelectorAll("a").forEach((link) => {
@@ -38,6 +38,7 @@
 
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
+
     const wasOpen = menuButton?.getAttribute("aria-expanded") === "true";
     setMenu(false);
     if (wasOpen) menuButton?.focus();
