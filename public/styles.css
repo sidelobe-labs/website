@@ -55,10 +55,6 @@ body::before {
   mask-image: linear-gradient(to bottom, #000 0%, transparent 78%);
 }
 
-body.menu-open {
-  overflow: hidden;
-}
-
 ::selection {
   color: #0c1523;
   background: var(--blue);
@@ -359,7 +355,10 @@ footer::before {
 }
 
 h1,
-h2,
+h2 {
+  text-wrap: balance;
+}
+
 h3,
 p {
   text-wrap: pretty;
@@ -1094,14 +1093,6 @@ footer::before {
     max-width: 530px;
   }
 
-  .hero-trust {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-trust span {
-    text-align: left;
-  }
-
   .split {
     grid-template-columns: 1fr;
     gap: 22px;
@@ -1196,6 +1187,14 @@ footer::before {
 
   .hero-visual {
     padding: 4px 0;
+  }
+
+  .hero-trust {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-trust span {
+    text-align: left;
   }
 
   .signal-card {
