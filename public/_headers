@@ -4,6 +4,7 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   X-Frame-Options: DENY
   Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
   Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; object-src 'none'
 
 /
@@ -16,6 +17,9 @@
   Cache-Control: public, max-age=300, must-revalidate
 
 /app.js
+  Cache-Control: public, max-age=300, must-revalidate
+
+/404.css
   Cache-Control: public, max-age=300, must-revalidate
 
 /brand/*

@@ -2,6 +2,7 @@
   "name": "@sidelobe/website",
   "private": true,
   "scripts": {
+    "check": "node scripts/validate.mjs && node --check public/app.js",
     "deploy": "wrangler deploy",
     "preview": "wrangler preview"
   },

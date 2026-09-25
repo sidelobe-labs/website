@@ -6,7 +6,7 @@
   const copyLabel = copyButton?.querySelector(".copy-email-label");
   const copyStatus = document.querySelector(".copy-status");
   const navLinks = Array.from(document.querySelectorAll(".nav-link"));
-  const observedSections = ["on-demand", "process"]
+  const observedSections = ["on-demand", "process", "faq"]
     .map((id) => document.getElementById(id))
     .filter(Boolean);
 
@@ -47,6 +47,8 @@
   window.addEventListener("resize", () => {
     if (window.innerWidth > 680) setMenu(false);
   });
+
+  window.addEventListener("hashchange", () => setMenu(false));
 
   if ("IntersectionObserver" in window && observedSections.length) {
     const linkById = new Map(
