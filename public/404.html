@@ -4,57 +4,65 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#111C2D" />
+  <meta name="color-scheme" content="dark" />
   <meta name="robots" content="noindex" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <title>404 — Signal lost · Sidelobe</title>
   <style>
     * { box-sizing: border-box; }
-    html, body { margin: 0; min-height: 100%; }
+    html, body { margin: 0; min-height: 100%; background: #0c1523; }
     body {
-      min-height: 100vh;
+      min-height: 100svh;
       display: grid;
       place-items: center;
-      padding: 28px;
+      padding: 24px;
       color: #f5f8fc;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at 72% 22%, rgba(121,177,255,.12), transparent 28rem),
+        radial-gradient(circle at 76% 18%, rgba(121,177,255,.12), transparent 30rem),
         linear-gradient(180deg, #111c2d, #0c1523);
     }
     .card {
       width: min(100%, 760px);
-      padding: clamp(34px, 7vw, 70px);
-      border: 1px solid rgba(255,255,255,.10);
+      padding: clamp(32px, 7vw, 68px);
+      border: 1px solid rgba(255,255,255,.11);
       border-radius: 28px;
       background: rgba(255,255,255,.025);
       box-shadow: 0 35px 120px rgba(0,0,0,.28);
     }
-    .logo { width: min(100%, 260px); height: auto; display: block; margin-bottom: 64px; }
+    .logo { width: min(100%, 260px); height: auto; display: block; margin-bottom: 66px; }
     .eyebrow {
       color: #8fd18f;
-      font-size: 11px;
-      font-weight: 700;
+      font-size: 10px;
+      font-weight: 750;
       letter-spacing: .18em;
       text-transform: uppercase;
     }
     h1 {
       margin: 18px 0 0;
-      font-size: clamp(52px, 10vw, 92px);
+      font-size: clamp(54px, 10vw, 92px);
       line-height: .92;
       letter-spacing: -.065em;
     }
-    p { margin: 26px 0 0; color: #9eacbe; font-size: 17px; line-height: 1.6; }
+    p {
+      max-width: 560px;
+      margin: 25px 0 0;
+      color: #9eacbe;
+      font-size: 16px;
+      line-height: 1.65;
+    }
     a {
       display: inline-flex;
       margin-top: 34px;
-      padding: 11px 16px;
+      padding: 12px 17px;
       border-radius: 999px;
       color: #0c1523;
       background: #79b1ff;
       font-size: 13px;
-      font-weight: 650;
+      font-weight: 700;
       text-decoration: none;
     }
+    a:focus-visible { outline: 2px solid #8fd18f; outline-offset: 4px; }
   </style>
 </head>
 <body>
@@ -62,7 +70,7 @@
     <img class="logo" src="/brand/sidelobe-signal-dark.svg" alt="Sidelobe" />
     <div class="eyebrow">404 / signal lost</div>
     <h1>Nothing here.</h1>
-    <p>The address is valid. The page is not.</p>
+    <p>The address resolved correctly. The page did not. Head back to Sidelobe and pick up the signal there.</p>
     <a href="/">Back to sidelobe.dev</a>
   </main>
 </body>

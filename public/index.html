@@ -11,10 +11,12 @@
   <link rel="canonical" href="https://sidelobe.dev/" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preload" href="/brand/sidelobe-signal-dark.svg" as="image" type="image/svg+xml" />
   <link rel="stylesheet" href="/styles.css" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Sidelobe" />
+  <meta property="og:locale" content="en_US" />
   <meta property="og:title" content="Sidelobe — Small software. Built properly." />
   <meta property="og:description" content="On-demand applications and focused software for real workflows." />
   <meta property="og:url" content="https://sidelobe.dev/" />
@@ -45,7 +47,28 @@
         <a class="nav-link" href="#process">Process</a>
         <a class="nav-cta" href="#contact">Contact</a>
       </nav>
+
+      <div class="nav-mobile-actions">
+        <a class="nav-cta" href="#contact">Contact</a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <span class="menu-toggle-label">Menu</span>
+          <span class="menu-toggle-icon" aria-hidden="true"></span>
+        </button>
+      </div>
     </div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+      <div class="shell mobile-nav-inner">
+        <a href="#on-demand">On demand <span aria-hidden="true">↘</span></a>
+        <a href="#process">Process <span aria-hidden="true">↘</span></a>
+        <a href="#faq">Questions <span aria-hidden="true">↘</span></a>
+      </div>
+    </nav>
   </header>
 
   <main id="main">
@@ -60,8 +83,8 @@
           </h1>
 
           <p class="hero-lead">
-            On-demand applications for workflows that do not fit off-the-shelf software.
-            Sidelobe turns a specific operational problem into a focused tool your team can actually use.
+            Focused, on-demand applications for workflows that do not fit off-the-shelf software.
+            Sidelobe turns a specific operational problem into a tool your team can actually use.
           </p>
 
           <div class="hero-actions">
@@ -72,7 +95,7 @@
             <a class="button button-secondary" href="#on-demand">See if it fits</a>
           </div>
 
-          <p class="hero-note">No polished brief required. Start with the problem and the workflow you have today.</p>
+          <p class="hero-note">No polished brief required. Start with the workflow you have today and what feels painful about it.</p>
 
           <div class="capabilities" aria-label="Capabilities">
             <span>custom web apps</span>
@@ -108,6 +131,12 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="shell hero-trust" aria-label="Working principles">
+        <span>No specification required</span>
+        <span>Focused scope</span>
+        <span>Production-minded from day one</span>
       </div>
     </section>
 
@@ -223,6 +252,61 @@
       </div>
     </section>
 
+    <section class="section section-rule" id="faq">
+      <div class="shell split">
+        <aside class="section-label">
+          <span class="kicker">Questions</span>
+          <p>A few things you do not need to solve before getting in touch.</p>
+        </aside>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>
+              <span>Do I need a specification?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </summary>
+            <p>
+              No. A rough description of the current workflow, who uses it and where it becomes painful is enough
+              to start scoping the problem.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Can an app work with tools we already use?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </summary>
+            <p>
+              Often, yes. It depends on the systems involved and the integration methods they expose.
+              That can be checked early, before it becomes part of the build.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Can we start with a small version?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </summary>
+            <p>
+              Yes. The preferred starting point is the smallest version that solves a real part of the workflow,
+              then expanding only where use proves it is worthwhile.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Is Sidelobe only for internal tools?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </summary>
+            <p>
+              No. Internal and workflow tools are a natural fit, but focused customer-facing apps,
+              prototypes and automation are within scope too.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <section class="section section-rule contact-section" id="contact">
       <div class="shell">
         <div class="contact-card">
@@ -243,9 +327,11 @@
               Email hello@sidelobe.dev
               <span aria-hidden="true">↗</span>
             </a>
+
             <button class="button button-secondary copy-email" type="button" data-copy-email="hello@sidelobe.dev">
-              Copy email
+              <span class="copy-email-label">Copy email</span>
             </button>
+
             <span class="copy-status" role="status" aria-live="polite"></span>
           </div>
 
