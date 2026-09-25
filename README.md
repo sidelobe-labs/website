@@ -1,6 +1,23 @@
-# Sidelobe Website
+<p align="center">
+  <img src="./public/brand/sidelobe-signal-dark.svg" width="420" alt="Sidelobe">
+</p>
 
-Source repository for the Sidelobe studio website: https://sidelobe.dev
+<p align="center">
+  <strong>Sidelobe studio website</strong><br>
+  Small software. Built properly.
+</p>
+
+<p align="center">
+  <a href="https://sidelobe.dev">sidelobe.dev</a>
+  ·
+  <a href="https://github.com/sidelobe-labs/website/actions/workflows/quality.yml">
+    <img src="https://github.com/sidelobe-labs/website/actions/workflows/quality.yml/badge.svg" alt="Website quality">
+  </a>
+</p>
+
+---
+
+Source repository for the Sidelobe studio website.
 
 The site presents Sidelobe's on-demand software offering, process and contact information. It is intentionally small, dependency-light and served as static assets by a Cloudflare Worker.
 
