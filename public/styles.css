@@ -57,6 +57,27 @@ body::before {
   background: var(--blue);
 }
 
+/* Keep presentation and controls feeling like interface, not selectable copy.
+   Long-form content, FAQ answers and contact details remain selectable. */
+.brand,
+.nav-links,
+.nav-mobile-actions,
+.eyebrow,
+.hero h1,
+.hero-actions,
+.capability-line,
+.hero-visual,
+.hero-trust,
+.kicker,
+.micro-label,
+.card-index,
+.process-number,
+.faq-item summary,
+.footer-brand {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 a,
 button { font: inherit; }
 
